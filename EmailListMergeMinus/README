@@ -1,0 +1,33 @@
+#
+# Email List Merge Minus
+#
+
+$ ./mergeminus.py --help
+usage: mergeminus.py [-h] [--state STATE] [--merge MERGE] [--minus MINUS] [--print]
+
+Merge or minus emails and their names from a json state file
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --state STATE  The json file to merge/minus/print email addresses into/from
+  --merge MERGE  The CSV file to merge email addresses from
+  --minus MINUS  The CSV file to minus email addresses of
+  --print        Print the state file
+
+
+Given a specified STATE json file the mergeminums.py program either
+- merges email addresses from a MERGE file into the STATE file
+- removes email addresses from a MINUS file from the STATE file
+- prints email addresses in the STATE file
+
+MERGE and MINUS files must be CSV files with a first row containing case insensitive columns names,
+including "First name", "Last name", and "Email" columns. Other columns are ignored.
+
+The STATE file is in JSON format. If it doesn't exist it is initialized.
+
+#
+# Example
+#
+The pearc22_possible_reviewers.sh script is an example for how the mergeminus.py program as used to merge reviewer lists
+from previous PEARC conferences, and subtract a list of reviewers that have already volunteered. The resulting list will
+be used to look for additional reviewers.
